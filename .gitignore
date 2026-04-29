@@ -28,6 +28,10 @@ apps/docs/public/pagefind/
 .vercel
 
 # Internal development files (not useful for contributors)
-CLAUDE.md
-InkUI-Phase2-Guide.md
-.claude/
+
+
+# Local CLI-added components
+apps/cli/components/
+
+# Lockfile
+package-lock.json
