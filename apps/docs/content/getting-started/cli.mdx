@@ -24,24 +24,19 @@ npx inkui add spinner table select dialog
 npx inkui add spinner badge progress-bar text-input select multi-select table dialog
 ```
 
-### Options
-
-| Flag | Description |
-|------|-------------|
-| `--dir <path>` | Target directory (default: `./components/ui`) |
-| `--overwrite` | Overwrite existing files without prompting |
-| `--dry-run` | Preview what would be added without writing |
-
 ### What gets added
 
 Running `npx inkui add spinner` copies:
 
 ```
 ./components/ui/
-└── spinner.tsx     ← the component source you own
+├── _core.ts        ← shared theme & design tokens
+└── spinner/
+    ├── Spinner.tsx  ← the component source you own
+    └── index.ts
 ```
 
-The component imports `@inkui-cli/core` for tokens. That package is added to your `package.json` automatically.
+Components import from a shared `_core.ts` file that is automatically copied alongside them.
 
 ## Available components
 
@@ -62,12 +57,4 @@ List all available components:
 
 ```bash
 npx inkui list
-```
-
-## inkui diff
-
-Show what changed between your local copy and the latest version:
-
-```bash
-npx inkui diff spinner
 ```

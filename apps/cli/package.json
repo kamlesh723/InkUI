@@ -1,13 +1,18 @@
 {
-  "name": "@inkui-cli/cli",
-  "version": "0.3.0",
+  "name": "inkui",
+  "version": "0.4.0",
   "type": "module",
   "description": "shadcn-style CLI installer for InkUI terminal components",
+  "files": [
+    "dist",
+    "registry"
+  ],
   "bin": {
     "inkui": "./dist/cli.js"
   },
   "scripts": {
-    "build": "tsup",
+    "sync-registry": "tsx scripts/sync-registry.ts",
+    "build": "tsx scripts/sync-registry.ts && tsup",
     "dev": "tsup --watch",
     "demo": "tsx src/cli.tsx list",
     "demo:add": "tsx src/cli.tsx add spinner",
@@ -15,6 +20,11 @@
     "test": "echo 'no tests for CLI app'"
   },
   "dependencies": {
+    "string-width": "^7.0.0",
+    "ink": "^6.0.0",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
     "@inkui-cli/core": "workspace:*",
     "@inkui-cli/panel": "workspace:*",
     "@inkui-cli/spinner": "workspace:*",
@@ -32,11 +42,6 @@
     "@inkui-cli/key-hint": "workspace:*",
     "@inkui-cli/divider": "workspace:*",
     "@inkui-cli/header": "workspace:*",
-    "string-width": "^7.0.0",
-    "ink": "^6.0.0",
-    "react": "^19.0.0"
-  },
-  "devDependencies": {
     "@types/react": "^19.0.0",
     "typescript": "^5.4.0",
     "tsup": "^8.0.0",

@@ -8,7 +8,7 @@ import { ThemeCommand }      from './commands/Theme.js';
 
 const args    = process.argv.slice(2);
 const command = args[0];
-const target  = args[1] ?? '';
+const targets = args.slice(1);
 
 switch (command) {
   case 'list':
@@ -16,11 +16,11 @@ switch (command) {
     break;
 
   case 'add':
-    if (!target) {
-      console.error('Usage: inkui add <component> | --all');
+    if (targets.length === 0) {
+      console.error('Usage: inkui add <component> [components...] | --all');
       process.exit(1);
     }
-    render(<AddCommand target={target} />);
+    render(<AddCommand targets={targets} />);
     break;
 
   case 'playground':

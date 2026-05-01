@@ -4,7 +4,7 @@ import { Spinner } from '@inkui-cli/spinner';
 import { Badge } from '@inkui-cli/badge';
 import { darkTheme } from '@inkui-cli/core';
 import { copyFile, mkdir } from 'node:fs/promises';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
 import { existsSync } from 'node:fs';
 import { REGISTRY, componentNames, pkgSrcDir } from '../registry.js';
 
@@ -26,7 +26,8 @@ async function copyComponent(
   cwd: string,
 ): Promise<ComponentResult> {
   const entry   = REGISTRY[componentName];
-  const destDir = join(cwd, 'components', 'ui', componentName);
+  const uiDir   = join(cwd, 'components', 'ui');
+  const destDir = join(uiDir, componentName);
 
   if (!entry) {
     return {
@@ -49,6 +50,16 @@ async function copyComponent(
   }
 
   await mkdir(destDir, { recursive: true });
+
+  const registryRoot = dirname(srcDir);
+  try {
+    // Copy _core.ts to the components/ui folder (it provides theme & tokens)
+    if (!existsSync(join(uiDir, '_core.ts'))) {
+      await copyFile(join(registryRoot, '_core.ts'), join(uiDir, '_core.ts'));
+    }
+  } catch {
+    // Ignore if running without registry synced
+  }
 
   const files: FileResult[] = await Promise.all(
     entry.files.map(async (filename) => {
@@ -110,21 +121,20 @@ const ResultBlock: React.FC<{ result: ComponentResult }> = ({ result }) => {
 // ─── add command ─────────────────────────────────────────────────────────────
 
 export interface AddCommandProps {
-  /** Component name or '--all' */
-  target: string;
+  /** Component names or '--all' */
+  targets: string[];
 }
 
 type Phase = 'running' | 'done';
 
-export const AddCommand: React.FC<AddCommandProps> = ({ target }) => {
+export const AddCommand: React.FC<AddCommandProps> = ({ targets }) => {
   const { exit } = useApp();
   const [phase, setPhase]     = useState<Phase>('running');
   const [results, setResults] = useState<ComponentResult[]>([]);
   const [current, setCurrent] = useState('');
 
   useEffect(() => {
-    const names =
-      target === '--all' ? componentNames : [target];
+    const names = targets.includes('--all') ? componentNames : targets;
 
     (async () => {
       const out: ComponentResult[] = [];

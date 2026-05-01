@@ -1,12 +1,8 @@
 import { fileURLToPath } from 'node:url';
 import { join, dirname } from 'node:path';
 
-// Works for both:
-//   dev  — tsx runs from apps/cli/src/registry.ts  → 3 levels up to monorepo root
-//   prod — built file at apps/cli/dist/cli.js       → 3 levels up to monorepo root
-const _dir      = dirname(fileURLToPath(import.meta.url));
-const monoRoot  = join(_dir, '..', '..', '..');
-const pkgsRoot  = join(monoRoot, 'packages');
+const _dir         = dirname(fileURLToPath(import.meta.url));
+const registryRoot = join(_dir, '..', 'registry');
 
 export interface RegistryEntry {
   /** Short description shown in `inkui list` */
@@ -75,6 +71,10 @@ export const REGISTRY: Record<string, RegistryEntry> = {
   header: {
     description: 'App header bar — box, line, filled styles with title and subtitle',
     files: ['Header.tsx', 'index.ts'],
+  },
+  panel: {
+    description: 'Bordered panel with title — single, double, rounded, bold, ascii',
+    files: ['Panel.tsx', 'index.ts'],
   },
 
   // ── Layout ────────────────────────────────────────────────────────────────
@@ -154,9 +154,9 @@ export const REGISTRY: Record<string, RegistryEntry> = {
   },
 };
 
-/** Absolute path to the source directory for a component package. */
+/** Absolute path to the embedded registry directory for a component. */
 export function pkgSrcDir(componentName: string): string {
-  return join(pkgsRoot, componentName, 'src');
+  return join(registryRoot, componentName);
 }
 
 /** All component names, sorted alphabetically. */
