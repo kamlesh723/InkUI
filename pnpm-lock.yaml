@@ -23,6 +23,16 @@ importers:
 
   apps/cli:
     dependencies:
+      ink:
+        specifier: ^6.0.0
+        version: 6.8.0(@types/react@19.2.14)(react@19.2.4)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.4
+      string-width:
+        specifier: ^7.0.0
+        version: 7.2.0
+    devDependencies:
       '@inkui-cli/badge':
         specifier: workspace:*
         version: link:../../packages/badge
@@ -74,16 +84,6 @@ importers:
       '@inkui-cli/toast':
         specifier: workspace:*
         version: link:../../packages/toast
-      ink:
-        specifier: ^6.0.0
-        version: 6.8.0(@types/react@19.2.14)(react@19.2.4)
-      react:
-        specifier: ^19.0.0
-        version: 19.2.4
-      string-width:
-        specifier: ^7.0.0
-        version: 7.2.0
-    devDependencies:
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.14
