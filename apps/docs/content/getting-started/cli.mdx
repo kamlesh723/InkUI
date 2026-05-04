@@ -20,8 +20,8 @@ npx inkui add spinner
 # Add multiple at once
 npx inkui add spinner table select dialog
 
-# Add all components
-npx inkui add spinner badge progress-bar text-input select multi-select table dialog
+# Add all 32 components at once
+npx inkui add --all
 ```
 
 ### What gets added
@@ -30,31 +30,74 @@ Running `npx inkui add spinner` copies:
 
 ```
 ./components/ui/
-├── _core.ts        ← shared theme & design tokens
+├── _core.ts        ← shared theme & design tokens (copied once)
 └── spinner/
     ├── Spinner.tsx  ← the component source you own
     └── index.ts
 ```
 
-Components import from a shared `_core.ts` file that is automatically copied alongside them.
+Components import from the shared `_core.ts` file that is automatically copied alongside them. You own all of it — modify freely.
+
+## inkui list
+
+List all available components in a table:
+
+```bash
+npx inkui list
+```
+
+## inkui playground
+
+Interactive component browser — live preview every component in your terminal:
+
+```bash
+npx inkui playground
+```
+
+## inkui theme
+
+Visual theme builder — pick colors interactively and export a ready-to-use `inkui.theme.ts` file:
+
+```bash
+npx inkui theme
+```
 
 ## Available components
 
 | Component | Command |
 |-----------|---------|
-| Spinner | `npx inkui add spinner` |
+| Accordion | `npx inkui add accordion` |
+| Autocomplete | `npx inkui add autocomplete` |
 | Badge | `npx inkui add badge` |
-| ProgressBar | `npx inkui add progress-bar` |
-| TextInput | `npx inkui add text-input` |
-| Select | `npx inkui add select` |
-| MultiSelect | `npx inkui add multi-select` |
-| Table | `npx inkui add table` |
+| CodeBlock | `npx inkui add code-block` |
+| Confirm | `npx inkui add confirm` |
+| DataTable | `npx inkui add data-table` |
 | Dialog | `npx inkui add dialog` |
+| DiffView | `npx inkui add diff-view` |
+| Divider | `npx inkui add divider` |
+| Gauge | `npx inkui add gauge` |
+| Header | `npx inkui add header` |
+| Hooks | `npx inkui add hooks` |
+| JSONViewer | `npx inkui add json-viewer` |
+| KeyHint | `npx inkui add key-hint` |
+| LoadingBar | `npx inkui add loading-bar` |
+| Markdown | `npx inkui add markdown` |
+| MultiSelect | `npx inkui add multi-select` |
+| Panel | `npx inkui add panel` |
+| ProgressBar | `npx inkui add progress-bar` |
+| ScrollArea | `npx inkui add scroll-area` |
+| Select | `npx inkui add select` |
+| Sparkline | `npx inkui add sparkline` |
+| Spinner | `npx inkui add spinner` |
+| StatusIndicator | `npx inkui add status-indicator` |
+| Stepper | `npx inkui add stepper` |
+| StreamingText | `npx inkui add streaming-text` |
+| Table | `npx inkui add table` |
+| Tabs | `npx inkui add tabs` |
+| TextInput | `npx inkui add text-input` |
+| Toast | `npx inkui add toast` |
+| TokenCounter | `npx inkui add token-counter` |
+| TreeView | `npx inkui add tree-view` |
+| Typewriter | `npx inkui add typewriter` |
 
-## inkui list
-
-List all available components:
-
-```bash
-npx inkui list
-```
+Run `npx inkui list` in your terminal to see all components with descriptions.

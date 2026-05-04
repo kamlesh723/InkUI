@@ -1,14 +1,16 @@
 ---
 title: Theming
-description: Customize colors, borders, and spacing across all components.
+description: Customize colors and borders across all components.
 ---
 
 ## Theme system
 
-Every InkUI component accepts an optional `theme` prop of type `InkUITheme`. By default, all components use `darkTheme` from `@inkui-cli/core`.
+Every InkUI component accepts an optional `theme` prop of type `InkUITheme`. By default, all components use `darkTheme`.
+
+If you used `npx inkui add`, import from the shared `_core.ts` that was copied into your project:
 
 ```tsx
-import { darkTheme, lightTheme } from '@inkui-cli/core';
+import { darkTheme, lightTheme } from './components/ui/_core';
 import { Spinner } from './components/ui/spinner';
 
 // Default (dark)
@@ -16,6 +18,12 @@ import { Spinner } from './components/ui/spinner';
 
 // Light theme
 <Spinner label="Loading..." theme={lightTheme} />
+```
+
+If you installed via npm (`npm install @inkui-cli/spinner`), import from the package:
+
+```tsx
+import { darkTheme, lightTheme } from '@inkui-cli/core';
 ```
 
 ## Theme shape
@@ -28,28 +36,69 @@ interface InkUITheme {
     success: string;
     warning: string;
     error: string;
+    info: string;
+    muted: string;
     text: string;
-    textMuted: string;
+    textInverse: string;
     border: string;
-    background: string;
+    focus: string;
+    selection: string;
   };
-  borderStyle: BorderStyle;
-  spacing: {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-  };
+  border: 'single' | 'double' | 'rounded' | 'bold' | 'ascii';
 }
+```
+
+## Built-in themes
+
+InkUI ships two themes out of the box:
+
+```ts
+// Dark theme (default)
+const darkTheme: InkUITheme = {
+  colors: {
+    primary: 'cyan',
+    secondary: 'magenta',
+    success: 'green',
+    warning: 'yellow',
+    error: 'red',
+    info: 'blue',
+    muted: 'gray',
+    text: 'white',
+    textInverse: 'black',
+    border: 'gray',
+    focus: 'cyan',
+    selection: 'blue',
+  },
+  border: 'single',
+};
+
+// Light theme
+const lightTheme: InkUITheme = {
+  colors: {
+    primary: 'blue',
+    secondary: 'magenta',
+    success: 'green',
+    warning: 'yellow',
+    error: 'red',
+    info: 'cyan',
+    muted: 'gray',
+    text: 'black',
+    textInverse: 'white',
+    border: 'gray',
+    focus: 'blue',
+    selection: 'cyan',
+  },
+  border: 'rounded',
+};
 ```
 
 ## Custom theme
 
-Create your own theme by extending the defaults:
+Create your own theme by spreading the defaults and overriding what you need:
 
 ```ts
-import { darkTheme } from '@inkui-cli/core';
-import type { InkUITheme } from '@inkui-cli/core';
+import { darkTheme } from './components/ui/_core';
+import type { InkUITheme } from './components/ui/_core';
 
 export const myTheme: InkUITheme = {
   ...darkTheme,
@@ -58,9 +107,11 @@ export const myTheme: InkUITheme = {
     primary: '#F472B6',   // pink instead of cyan
     border: '#3F3F46',
   },
-  borderStyle: 'rounded',
+  border: 'rounded',
 };
 ```
+
+Color values are passed directly to Ink's `<Text color="">` — named colors (`cyan`, `green`), hex (`#F472B6`), or `rgb(r,g,b)`. No chalk, no ANSI escape codes.
 
 ## Global theme provider
 
@@ -68,8 +119,8 @@ For consistency across your whole CLI app, create a theme context:
 
 ```tsx
 import React, { createContext, useContext } from 'react';
-import { darkTheme } from '@inkui-cli/core';
-import type { InkUITheme } from '@inkui-cli/core';
+import { darkTheme } from './components/ui/_core';
+import type { InkUITheme } from './components/ui/_core';
 
 const ThemeContext = createContext<InkUITheme>(darkTheme);
 
@@ -86,9 +137,17 @@ export function ThemeProvider({
 export const useTheme = () => useContext(ThemeContext);
 ```
 
+## Visual theme builder
+
+Run the interactive theme builder in your terminal to pick colors and export a ready-to-use theme file:
+
+```bash
+npx inkui theme
+```
+
 ## Border styles
 
-The `borderStyle` token controls box-drawing characters across Table, Dialog, and other bordered components:
+The `border` token controls box-drawing characters across Table, Dialog, Panel, and other bordered components:
 
 | Value | Characters |
 |-------|-----------|

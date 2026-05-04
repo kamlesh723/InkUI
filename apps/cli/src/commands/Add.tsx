@@ -4,7 +4,7 @@ import { Spinner } from '@inkui-cli/spinner';
 import { Badge } from '@inkui-cli/badge';
 import { darkTheme } from '@inkui-cli/core';
 import { copyFile, mkdir } from 'node:fs/promises';
-import { join, dirname } from 'node:path';
+import { join, dirname, relative } from 'node:path';
 import { existsSync } from 'node:fs';
 import { REGISTRY, componentNames, pkgSrcDir } from '../registry.js';
 
@@ -19,6 +19,7 @@ interface ComponentResult {
   destDir: string;
   files: FileResult[];
   skipped?: string; // reason if not attempted
+  peerDeps?: string[]; // npm packages user must install
 }
 
 async function copyComponent(
@@ -52,13 +53,18 @@ async function copyComponent(
   await mkdir(destDir, { recursive: true });
 
   const registryRoot = dirname(srcDir);
-  try {
-    // Copy _core.ts to the components/ui folder (it provides theme & tokens)
-    if (!existsSync(join(uiDir, '_core.ts'))) {
+  // Copy _core.ts to the components/ui folder (it provides theme & tokens)
+  if (!existsSync(join(uiDir, '_core.ts'))) {
+    try {
       await copyFile(join(registryRoot, '_core.ts'), join(uiDir, '_core.ts'));
+    } catch (err) {
+      return {
+        component: componentName,
+        destDir,
+        files: [],
+        skipped: `failed to copy _core.ts — ${err instanceof Error ? err.message : String(err)}`,
+      };
     }
-  } catch {
-    // Ignore if running without registry synced
   }
 
   const files: FileResult[] = await Promise.all(
@@ -76,13 +82,22 @@ async function copyComponent(
     }),
   );
 
-  return { component: componentName, destDir, files };
+  return {
+    component: componentName,
+    destDir,
+    files,
+    peerDeps: entry.peerDeps,
+  };
 }
 
 // ─── component result display ────────────────────────────────────────────────
 
+function toRelDisplay(absPath: string): string {
+  return './' + relative(process.cwd(), absPath).replace(/\\/g, '/');
+}
+
 const ResultBlock: React.FC<{ result: ComponentResult }> = ({ result }) => {
-  const relDest = result.destDir.replace(process.cwd() + '/', './');
+  const relDest = toRelDisplay(result.destDir);
 
   if (result.skipped) {
     return (
@@ -181,14 +196,18 @@ export const AddCommand: React.FC<AddCommandProps> = ({ targets }) => {
           </Text>
           {results
             .filter((r) => !r.skipped && r.files.some((f) => f.ok))
-            .map((r) => {
-              const rel = r.destDir.replace(process.cwd() + '/', './');
-              return (
-                <Text key={r.component} dimColor>
-                  {'  '}import {'{ … }'} from &apos;{rel}&apos;
-                </Text>
-              );
-            })}
+            .map((r) => (
+              <Text key={r.component} dimColor>
+                {'  '}import {'{ … }'} from &apos;{toRelDisplay(r.destDir)}&apos;
+              </Text>
+            ))}
+          {results
+            .filter((r) => r.peerDeps && r.peerDeps.length > 0 && !r.skipped)
+            .map((r) => (
+              <Text key={r.component} color={darkTheme.colors.warning}>
+                {'  '}⚠  {r.component} requires: npm install {r.peerDeps!.join(' ')}
+              </Text>
+            ))}
         </Box>
       ) : null}
     </Box>

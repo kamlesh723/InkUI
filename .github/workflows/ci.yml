@@ -46,7 +46,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm turbo build --filter='./packages/*' --filter='./apps/docs'
+        run: pnpm turbo build --filter='./packages/*' --filter='./apps/docs' --filter='inkui'
 
       - name: Test
         run: pnpm turbo test --filter='./packages/*'

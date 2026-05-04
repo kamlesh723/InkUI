@@ -45,14 +45,13 @@ jobs:
             ${{ runner.os }}-pnpm-
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build all packages
         run: pnpm turbo build --filter='./packages/*' --filter='inkui'
 
       - name: Create release PR or publish to npm
         uses: changesets/action@v1
-        continue-on-error: true
         with:
           version: pnpm changeset version
           publish: pnpm changeset publish

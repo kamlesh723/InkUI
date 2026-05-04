@@ -3,6 +3,9 @@ import { Box, Text, useApp } from 'ink';
 import { Badge } from '@inkui-cli/badge';
 import { darkTheme } from '@inkui-cli/core';
 
+// Injected at build time by tsup define — see tsup.config.ts
+declare const __CLI_VERSION__: string;
+
 export const HelpCommand: React.FC = () => {
   const { exit } = useApp();
   useEffect(() => {
@@ -14,7 +17,7 @@ export const HelpCommand: React.FC = () => {
     <Box flexDirection="column" gap={1}>
       <Box gap={2}>
         <Text bold>InkUI</Text>
-        <Badge variant="info" theme={darkTheme}>v0.3.0</Badge>
+        <Badge variant="info" theme={darkTheme}>{`v${__CLI_VERSION__}`}</Badge>
       </Box>
 
       <Box flexDirection="column">

@@ -9,6 +9,8 @@ export interface RegistryEntry {
   description: string;
   /** Source file names inside packages/<name>/src/ */
   files: string[];
+  /** npm packages the user must install alongside the component */
+  peerDeps?: string[];
 }
 
 export const REGISTRY: Record<string, RegistryEntry> = {
@@ -75,6 +77,7 @@ export const REGISTRY: Record<string, RegistryEntry> = {
   panel: {
     description: 'Bordered panel with title — single, double, rounded, bold, ascii',
     files: ['Panel.tsx', 'index.ts'],
+    peerDeps: ['string-width'],
   },
 
   // ── Layout ────────────────────────────────────────────────────────────────

@@ -15,11 +15,11 @@
   <a href="https://github.com/kamlesh723/InkUI/actions/workflows/ci.yml">
     <img src="https://github.com/kamlesh723/InkUI/actions/workflows/ci.yml/badge.svg" alt="CI">
   </a>
-  <a href="https://www.npmjs.com/package/@inkui-cli/cli">
-    <img src="https://img.shields.io/npm/v/@inkui-cli/cli?label=npm&color=06B6D4" alt="npm">
+  <a href="https://www.npmjs.com/package/inkui">
+    <img src="https://img.shields.io/npm/v/inkui?label=npm&color=06B6D4" alt="npm">
   </a>
-  <a href="https://www.npmjs.com/package/@inkui-cli/core">
-    <img src="https://img.shields.io/npm/dm/@inkui-cli/core?label=downloads&color=06B6D4" alt="downloads">
+  <a href="https://www.npmjs.com/package/inkui">
+    <img src="https://img.shields.io/npm/dm/inkui?label=downloads&color=06B6D4" alt="downloads">
   </a>
   <img src="https://img.shields.io/badge/TypeScript-5.4+-3178c6?logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Ink-6.x-61dafb?logo=react&logoColor=white" alt="Ink 6">
@@ -560,8 +560,12 @@ import { Header } from './components/ui/header';
 Every component accepts a `theme` prop. InkUI ships `darkTheme` and `lightTheme` out of the box, or you can build your own in seconds.
 
 ```tsx
-import { darkTheme, lightTheme } from '@inkui-cli/core';
-import type { InkUITheme } from '@inkui-cli/core';
+// If you used npx inkui add (copy-paste model) — import from the copied _core.ts:
+import { darkTheme, lightTheme } from './components/ui/_core';
+import type { InkUITheme } from './components/ui/_core';
+
+// If you installed via npm (import from package):
+// import { darkTheme, lightTheme } from '@inkui-cli/core';
 
 // Built-ins
 <Spinner theme={darkTheme} />

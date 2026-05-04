@@ -5,6 +5,9 @@ import { Badge } from '@inkui-cli/badge';
 import { darkTheme } from '@inkui-cli/core';
 import { REGISTRY, componentNames } from '../registry.js';
 
+// Injected at build time by tsup define — see tsup.config.ts
+declare const __CLI_VERSION__: string;
+
 type Row = { component: string; description: string };
 
 const rows: Row[] = componentNames.map((name) => ({
@@ -30,7 +33,7 @@ export const ListCommand: React.FC = () => {
     <Box flexDirection="column" gap={1}>
       <Box gap={2}>
         <Text bold>InkUI</Text>
-        <Badge variant="info" theme={darkTheme}>v0.1.0</Badge>
+        <Badge variant="info" theme={darkTheme}>{`v${__CLI_VERSION__}`}</Badge>
         <Text dimColor>shadcn-style terminal components for Ink</Text>
       </Box>
 
