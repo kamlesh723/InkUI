@@ -194,7 +194,7 @@ import { Badge } from './components/ui/badge';
 <Badge variant="warning">degraded</Badge>
 <Badge variant="error">failed</Badge>
 <Badge variant="info">queued</Badge>
-<Badge variant="default">v0.4.0</Badge>
+<Badge variant="default">v0.5.0</Badge>
 ```
 
 | Prop | Type | Default | Description |
