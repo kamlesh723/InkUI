@@ -48,7 +48,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build all packages
-        run: pnpm turbo build --filter='./packages/*' --filter='inkui'
+        run: pnpm turbo build --filter='./packages/*' --filter='@inkui-cli/inkui'
 
       - name: Create release PR or publish to npm
         uses: changesets/action@v1
