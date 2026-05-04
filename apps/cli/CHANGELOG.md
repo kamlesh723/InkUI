@@ -1,5 +1,11 @@
 # @inkui-cli/cli
 
+## 0.5.0
+
+### Minor Changes
+
+- 4fb850b: Fix standalone CLI distribution
+
 ## 0.3.0
 
 ### Minor Changes

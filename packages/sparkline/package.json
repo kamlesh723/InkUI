@@ -1,6 +1,6 @@
 {
   "name": "@inkui-cli/sparkline",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Inline mini chart using block characters for trend data",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -13,14 +13,20 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "test": "vitest run",
     "demo": "tsx demo/index.tsx"
   },
-  "peerDependencies": { "ink": "^6.0.0", "react": "^19.0.0" },
+  "peerDependencies": {
+    "ink": "^6.0.0",
+    "react": "^19.0.0"
+  },
   "devDependencies": {
     "@inkui-cli/core": "workspace:*",
     "ink": "^6.0.0",
