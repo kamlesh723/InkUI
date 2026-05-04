@@ -1,5 +1,5 @@
 {
-  "name": "inkui",
+  "name": "@inkui-cli/inkui",
   "version": "0.5.0",
   "type": "module",
   "description": "shadcn-style CLI installer for InkUI terminal components",

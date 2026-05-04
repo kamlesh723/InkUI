@@ -8,25 +8,25 @@ description: All inkui CLI commands and options.
 Add one or more components to your project.
 
 ```bash
-npx inkui add <component> [components...]
+npx @inkui-cli/inkui add <component> [components...]
 ```
 
 ### Examples
 
 ```bash
 # Add a single component
-npx inkui add spinner
+npx @inkui-cli/inkui add spinner
 
 # Add multiple at once
-npx inkui add spinner table select dialog
+npx @inkui-cli/inkui add spinner table select dialog
 
 # Add all 32 components at once
-npx inkui add --all
+npx @inkui-cli/inkui add --all
 ```
 
 ### What gets added
 
-Running `npx inkui add spinner` copies:
+Running `npx @inkui-cli/inkui add spinner` copies:
 
 ```
 ./components/ui/
@@ -43,7 +43,7 @@ Components import from the shared `_core.ts` file that is automatically copied a
 List all available components in a table:
 
 ```bash
-npx inkui list
+npx @inkui-cli/inkui list
 ```
 
 ## inkui playground
@@ -51,7 +51,7 @@ npx inkui list
 Interactive component browser — live preview every component in your terminal:
 
 ```bash
-npx inkui playground
+npx @inkui-cli/inkui playground
 ```
 
 ## inkui theme
@@ -59,45 +59,45 @@ npx inkui playground
 Visual theme builder — pick colors interactively and export a ready-to-use `inkui.theme.ts` file:
 
 ```bash
-npx inkui theme
+npx @inkui-cli/inkui theme
 ```
 
 ## Available components
 
 | Component | Command |
 |-----------|---------|
-| Accordion | `npx inkui add accordion` |
-| Autocomplete | `npx inkui add autocomplete` |
-| Badge | `npx inkui add badge` |
-| CodeBlock | `npx inkui add code-block` |
-| Confirm | `npx inkui add confirm` |
-| DataTable | `npx inkui add data-table` |
-| Dialog | `npx inkui add dialog` |
-| DiffView | `npx inkui add diff-view` |
-| Divider | `npx inkui add divider` |
-| Gauge | `npx inkui add gauge` |
-| Header | `npx inkui add header` |
-| Hooks | `npx inkui add hooks` |
-| JSONViewer | `npx inkui add json-viewer` |
-| KeyHint | `npx inkui add key-hint` |
-| LoadingBar | `npx inkui add loading-bar` |
-| Markdown | `npx inkui add markdown` |
-| MultiSelect | `npx inkui add multi-select` |
-| Panel | `npx inkui add panel` |
-| ProgressBar | `npx inkui add progress-bar` |
-| ScrollArea | `npx inkui add scroll-area` |
-| Select | `npx inkui add select` |
-| Sparkline | `npx inkui add sparkline` |
-| Spinner | `npx inkui add spinner` |
-| StatusIndicator | `npx inkui add status-indicator` |
-| Stepper | `npx inkui add stepper` |
-| StreamingText | `npx inkui add streaming-text` |
-| Table | `npx inkui add table` |
-| Tabs | `npx inkui add tabs` |
-| TextInput | `npx inkui add text-input` |
-| Toast | `npx inkui add toast` |
-| TokenCounter | `npx inkui add token-counter` |
-| TreeView | `npx inkui add tree-view` |
-| Typewriter | `npx inkui add typewriter` |
+| Accordion | `npx @inkui-cli/inkui add accordion` |
+| Autocomplete | `npx @inkui-cli/inkui add autocomplete` |
+| Badge | `npx @inkui-cli/inkui add badge` |
+| CodeBlock | `npx @inkui-cli/inkui add code-block` |
+| Confirm | `npx @inkui-cli/inkui add confirm` |
+| DataTable | `npx @inkui-cli/inkui add data-table` |
+| Dialog | `npx @inkui-cli/inkui add dialog` |
+| DiffView | `npx @inkui-cli/inkui add diff-view` |
+| Divider | `npx @inkui-cli/inkui add divider` |
+| Gauge | `npx @inkui-cli/inkui add gauge` |
+| Header | `npx @inkui-cli/inkui add header` |
+| Hooks | `npx @inkui-cli/inkui add hooks` |
+| JSONViewer | `npx @inkui-cli/inkui add json-viewer` |
+| KeyHint | `npx @inkui-cli/inkui add key-hint` |
+| LoadingBar | `npx @inkui-cli/inkui add loading-bar` |
+| Markdown | `npx @inkui-cli/inkui add markdown` |
+| MultiSelect | `npx @inkui-cli/inkui add multi-select` |
+| Panel | `npx @inkui-cli/inkui add panel` |
+| ProgressBar | `npx @inkui-cli/inkui add progress-bar` |
+| ScrollArea | `npx @inkui-cli/inkui add scroll-area` |
+| Select | `npx @inkui-cli/inkui add select` |
+| Sparkline | `npx @inkui-cli/inkui add sparkline` |
+| Spinner | `npx @inkui-cli/inkui add spinner` |
+| StatusIndicator | `npx @inkui-cli/inkui add status-indicator` |
+| Stepper | `npx @inkui-cli/inkui add stepper` |
+| StreamingText | `npx @inkui-cli/inkui add streaming-text` |
+| Table | `npx @inkui-cli/inkui add table` |
+| Tabs | `npx @inkui-cli/inkui add tabs` |
+| TextInput | `npx @inkui-cli/inkui add text-input` |
+| Toast | `npx @inkui-cli/inkui add toast` |
+| TokenCounter | `npx @inkui-cli/inkui add token-counter` |
+| TreeView | `npx @inkui-cli/inkui add tree-view` |
+| Typewriter | `npx @inkui-cli/inkui add typewriter` |
 
-Run `npx inkui list` in your terminal to see all components with descriptions.
+Run `npx @inkui-cli/inkui list` in your terminal to see all components with descriptions.

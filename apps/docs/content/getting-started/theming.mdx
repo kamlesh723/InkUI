@@ -7,7 +7,7 @@ description: Customize colors and borders across all components.
 
 Every InkUI component accepts an optional `theme` prop of type `InkUITheme`. By default, all components use `darkTheme`.
 
-If you used `npx inkui add`, import from the shared `_core.ts` that was copied into your project:
+If you used `npx @inkui-cli/inkui add`, import from the shared `_core.ts` that was copied into your project:
 
 ```tsx
 import { darkTheme, lightTheme } from './components/ui/_core';
@@ -142,7 +142,7 @@ export const useTheme = () => useContext(ThemeContext);
 Run the interactive theme builder in your terminal to pick colors and export a ready-to-use theme file:
 
 ```bash
-npx inkui theme
+npx @inkui-cli/inkui theme
 ```
 
 ## Border styles

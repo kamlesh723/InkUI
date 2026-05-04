@@ -15,11 +15,11 @@
   <a href="https://github.com/kamlesh723/InkUI/actions/workflows/ci.yml">
     <img src="https://github.com/kamlesh723/InkUI/actions/workflows/ci.yml/badge.svg" alt="CI">
   </a>
-  <a href="https://www.npmjs.com/package/inkui">
-    <img src="https://img.shields.io/npm/v/inkui?label=npm&color=06B6D4" alt="npm">
+  <a href="https://www.npmjs.com/package/@inkui-cli/inkui">
+    <img src="https://img.shields.io/npm/v/@inkui-cli%2Finkui?label=npm&color=06B6D4" alt="npm">
   </a>
-  <a href="https://www.npmjs.com/package/inkui">
-    <img src="https://img.shields.io/npm/dm/inkui?label=downloads&color=06B6D4" alt="downloads">
+  <a href="https://www.npmjs.com/package/@inkui-cli/inkui">
+    <img src="https://img.shields.io/npm/dm/@inkui-cli%2Finkui?label=downloads&color=06B6D4" alt="downloads">
   </a>
   <img src="https://img.shields.io/badge/TypeScript-5.4+-3178c6?logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Ink-6.x-61dafb?logo=react&logoColor=white" alt="Ink 6">
@@ -41,7 +41,7 @@
 Every time you build a CLI in Ink you rewrite the same spinner, progress bar, and select menu. InkUI gives you a starting point — but instead of shipping a black-box library, it works like **[shadcn/ui](https://ui.shadcn.com/)**: you run one command and get the TypeScript source file in your own project.
 
 ```bash
-npx inkui add spinner
+npx @inkui-cli/inkui add spinner
 ```
 
 ```
@@ -64,16 +64,16 @@ That's it. No new `node_modules` entry. No version drift. No surprise breaking c
 
 ```bash
 # See all available components
-npx inkui list
+npx @inkui-cli/inkui list
 
 # Add one component
-npx inkui add spinner
+npx @inkui-cli/inkui add spinner
 
 # Add several at once
-npx inkui add badge progress-bar table
+npx @inkui-cli/inkui add badge progress-bar table
 
 # Add everything
-npx inkui add --all
+npx @inkui-cli/inkui add --all
 ```
 
 Your project only needs two peer deps:
@@ -98,62 +98,62 @@ See [inkui-lib.vercel.app](https://inkui-lib.vercel.app) for live animated demos
 
 | Component | What it does | Install |
 |---|---|---|
-| **Spinner** | Animated spinner — `dots` `line` `arc` `bounce` | `npx inkui add spinner` |
-| **Badge** | Status chip — `default` `success` `warning` `error` `info` | `npx inkui add badge` |
-| **ProgressBar** | Fill bar with `%`, auto-sizes to terminal width | `npx inkui add progress-bar` |
-| **TextInput** | Cursor, arrows, backspace, placeholder, password mask | `npx inkui add text-input` |
-| **Select** | Arrow-key single-select, skips disabled items, generic `Select<T>` | `npx inkui add select` |
-| **MultiSelect** | Space-to-toggle checkboxes, pre-selection, generic `MultiSelect<T>` | `npx inkui add multi-select` |
-| **Table** | Auto column widths, overflow truncation, 5 border styles | `npx inkui add table` |
-| **Dialog** | Modal — title, message, keyboard-navigable action buttons | `npx inkui add dialog` |
-| **Toast** | Auto-dismissing notifications — `success` `warning` `error` `info` | `npx inkui add toast` |
-| **StatusIndicator** | Animated dot + label for service/connection health | `npx inkui add status-indicator` |
-| **LoadingBar** | Slim bar — indeterminate bounce or determinate `value` | `npx inkui add loading-bar` |
-| **Confirm** | `y/N` prompt with default, resolves to static confirmation line | `npx inkui add confirm` |
-| **KeyHint** | Row of `[key] label` keyboard shortcut hints | `npx inkui add key-hint` |
-| **Divider** | Full-width separator — `single` `double` `dashed` `bold`, optional title | `npx inkui add divider` |
-| **Header** | App header bar — `box` `line` `filled` styles, title + subtitle | `npx inkui add header` |
-| **Panel** | Bordered panel with optional title + `SplitPane` for split layouts | `npx inkui add panel` |
+| **Spinner** | Animated spinner — `dots` `line` `arc` `bounce` | `npx @inkui-cli/inkui add spinner` |
+| **Badge** | Status chip — `default` `success` `warning` `error` `info` | `npx @inkui-cli/inkui add badge` |
+| **ProgressBar** | Fill bar with `%`, auto-sizes to terminal width | `npx @inkui-cli/inkui add progress-bar` |
+| **TextInput** | Cursor, arrows, backspace, placeholder, password mask | `npx @inkui-cli/inkui add text-input` |
+| **Select** | Arrow-key single-select, skips disabled items, generic `Select<T>` | `npx @inkui-cli/inkui add select` |
+| **MultiSelect** | Space-to-toggle checkboxes, pre-selection, generic `MultiSelect<T>` | `npx @inkui-cli/inkui add multi-select` |
+| **Table** | Auto column widths, overflow truncation, 5 border styles | `npx @inkui-cli/inkui add table` |
+| **Dialog** | Modal — title, message, keyboard-navigable action buttons | `npx @inkui-cli/inkui add dialog` |
+| **Toast** | Auto-dismissing notifications — `success` `warning` `error` `info` | `npx @inkui-cli/inkui add toast` |
+| **StatusIndicator** | Animated dot + label for service/connection health | `npx @inkui-cli/inkui add status-indicator` |
+| **LoadingBar** | Slim bar — indeterminate bounce or determinate `value` | `npx @inkui-cli/inkui add loading-bar` |
+| **Confirm** | `y/N` prompt with default, resolves to static confirmation line | `npx @inkui-cli/inkui add confirm` |
+| **KeyHint** | Row of `[key] label` keyboard shortcut hints | `npx @inkui-cli/inkui add key-hint` |
+| **Divider** | Full-width separator — `single` `double` `dashed` `bold`, optional title | `npx @inkui-cli/inkui add divider` |
+| **Header** | App header bar — `box` `line` `filled` styles, title + subtitle | `npx @inkui-cli/inkui add header` |
+| **Panel** | Bordered panel with optional title + `SplitPane` for split layouts | `npx @inkui-cli/inkui add panel` |
 
 ### Phase 3A — Layout & Navigation
 
 | Component | What it does | Install |
 |---|---|---|
-| **ScrollArea** | Scrollable region with visible scrollbar, keyboard nav (`↑↓ g G`) | `npx inkui add scroll-area` |
-| **Tabs** | Tab panels — `underline` `boxed` `pills`, badge counts, disabled tabs | `npx inkui add tabs` |
-| **Accordion** | Expand/collapse sections, single or multiple open, keyboard nav | `npx inkui add accordion` |
+| **ScrollArea** | Scrollable region with visible scrollbar, keyboard nav (`↑↓ g G`) | `npx @inkui-cli/inkui add scroll-area` |
+| **Tabs** | Tab panels — `underline` `boxed` `pills`, badge counts, disabled tabs | `npx @inkui-cli/inkui add tabs` |
+| **Accordion** | Expand/collapse sections, single or multiple open, keyboard nav | `npx @inkui-cli/inkui add accordion` |
 
 ### Phase 3B — AI-Era Components
 
 | Component | What it does | Install |
 |---|---|---|
-| **StreamingText** | Token-by-token LLM output with blinking cursor and `onComplete` | `npx inkui add streaming-text` |
-| **TokenCounter** | Token budget bar — green→yellow→red as usage climbs | `npx inkui add token-counter` |
-| **CodeBlock** | Syntax highlighting, line numbers, title, 13 languages — no external deps | `npx inkui add code-block` |
-| **DiffView** | Unified diff with LCS algorithm — add/remove highlighting, context lines | `npx inkui add diff-view` |
-| **Typewriter** | Character-by-character animation — speed, delay, loop | `npx inkui add typewriter` |
+| **StreamingText** | Token-by-token LLM output with blinking cursor and `onComplete` | `npx @inkui-cli/inkui add streaming-text` |
+| **TokenCounter** | Token budget bar — green→yellow→red as usage climbs | `npx @inkui-cli/inkui add token-counter` |
+| **CodeBlock** | Syntax highlighting, line numbers, title, 13 languages — no external deps | `npx @inkui-cli/inkui add code-block` |
+| **DiffView** | Unified diff with LCS algorithm — add/remove highlighting, context lines | `npx @inkui-cli/inkui add diff-view` |
+| **Typewriter** | Character-by-character animation — speed, delay, loop | `npx @inkui-cli/inkui add typewriter` |
 
 ### Phase 3C — Data & Power
 
 | Component | What it does | Install |
 |---|---|---|
-| **TreeView** | Collapsible tree — vim keys, guide lines, expand/collapse state | `npx inkui add tree-view` |
-| **Autocomplete** | Live-filter input with dropdown, Tab-to-complete, Esc to clear | `npx inkui add autocomplete` |
-| **Stepper** | Multi-step wizard progress — horizontal/vertical, completed/error states | `npx inkui add stepper` |
-| **DataTable** | Sort, filter, paginate, select rows — keyboard driven | `npx inkui add data-table` |
-| **Gauge** | Metric bar with color thresholds — bar/arc/ring variants | `npx inkui add gauge` |
-| **Sparkline** | Inline `▁▂▃▄▅▆▇█` mini chart — live time-series, auto-downsampling | `npx inkui add sparkline` |
-| **Markdown** | Terminal Markdown — headings, lists, bold/italic, code, blockquotes | `npx inkui add markdown` |
-| **JSONViewer** | Interactive JSON explorer — expand/collapse, syntax colors, vim nav | `npx inkui add json-viewer` |
+| **TreeView** | Collapsible tree — vim keys, guide lines, expand/collapse state | `npx @inkui-cli/inkui add tree-view` |
+| **Autocomplete** | Live-filter input with dropdown, Tab-to-complete, Esc to clear | `npx @inkui-cli/inkui add autocomplete` |
+| **Stepper** | Multi-step wizard progress — horizontal/vertical, completed/error states | `npx @inkui-cli/inkui add stepper` |
+| **DataTable** | Sort, filter, paginate, select rows — keyboard driven | `npx @inkui-cli/inkui add data-table` |
+| **Gauge** | Metric bar with color thresholds — bar/arc/ring variants | `npx @inkui-cli/inkui add gauge` |
+| **Sparkline** | Inline `▁▂▃▄▅▆▇█` mini chart — live time-series, auto-downsampling | `npx @inkui-cli/inkui add sparkline` |
+| **Markdown** | Terminal Markdown — headings, lists, bold/italic, code, blockquotes | `npx @inkui-cli/inkui add markdown` |
+| **JSONViewer** | Interactive JSON explorer — expand/collapse, syntax colors, vim nav | `npx @inkui-cli/inkui add json-viewer` |
 
 ### Phase 3D — Hooks
 
 | Hook | What it does | Install |
 |---|---|---|
-| **useFocusManager** | Register/unregister focus regions, cycle with Tab | `npx inkui add hooks` |
-| **useKeyBindings** | Declarative key binding map with priority and context | `npx inkui add hooks` |
-| **useTerminalSize** | Live terminal `columns`/`rows` with resize tracking | `npx inkui add hooks` |
-| **useAsync** | Async data fetching with `loading`/`data`/`error` state | `npx inkui add hooks` |
+| **useFocusManager** | Register/unregister focus regions, cycle with Tab | `npx @inkui-cli/inkui add hooks` |
+| **useKeyBindings** | Declarative key binding map with priority and context | `npx @inkui-cli/inkui add hooks` |
+| **useTerminalSize** | Live terminal `columns`/`rows` with resize tracking | `npx @inkui-cli/inkui add hooks` |
+| **useAsync** | Async data fetching with `loading`/`data`/`error` state | `npx @inkui-cli/inkui add hooks` |
 
 ---
 
@@ -560,7 +560,7 @@ import { Header } from './components/ui/header';
 Every component accepts a `theme` prop. InkUI ships `darkTheme` and `lightTheme` out of the box, or you can build your own in seconds.
 
 ```tsx
-// If you used npx inkui add (copy-paste model) — import from the copied _core.ts:
+// If you used npx @inkui-cli/inkui add (copy-paste model) — import from the copied _core.ts:
 import { darkTheme, lightTheme } from './components/ui/_core';
 import type { InkUITheme } from './components/ui/_core';
 
@@ -571,7 +571,7 @@ import type { InkUITheme } from './components/ui/_core';
 <Spinner theme={darkTheme} />
 <Spinner theme={lightTheme} />
 
-// Custom theme — or use `npx inkui theme` for a visual builder
+// Custom theme — or use `npx @inkui-cli/inkui theme` for a visual builder
 const myTheme: InkUITheme = {
   colors: {
     primary:     'magenta',
@@ -595,7 +595,7 @@ const myTheme: InkUITheme = {
 
 Color values are passed directly to Ink's `<Text color="">` — named colors, `#rrggbb` hex, or `rgb(r,g,b)`. No chalk, no ANSI escape codes, no cross-platform headaches.
 
-Run `npx inkui theme` for an interactive visual theme builder in the terminal.
+Run `npx @inkui-cli/inkui theme` for an interactive visual theme builder in the terminal.
 
 ---
 
@@ -615,7 +615,7 @@ InkUI components are peer-dep free — your project supplies React and Ink.
 ## How the CLI works
 
 ```bash
-npx inkui add table
+npx @inkui-cli/inkui add table
 ```
 
 1. Looks up `table` in the built-in registry
